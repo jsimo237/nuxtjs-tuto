@@ -6,6 +6,8 @@ type PropsType = {
                 modelValue : any,
                 label : string,
                 type? : string,
+                rows? : number,
+                cols? : number,
               }
 
 
@@ -16,7 +18,9 @@ const emit = defineEmits(['update:modelValue'])
 const props = withDefaults(
                 defineProps<PropsType>(),
               {
-                type : "text"
+                type : "text",
+                rows : 2,
+                cols : 15,
               }
             )
 
@@ -51,8 +55,21 @@ const VModel1 = computed<any>({
 
 <template>
     <div style="margin-bottom: 10px;">
-        <label for="name" style="margin-right: 10px;">{{ label }}</label>
-        <input v-model="VModel2" :type="type" name="name">
+        <label for="name" style="margin-right: 10px;">
+          {{ label }}
+        </label>
+        <input
+         v-model="VModel1" 
+         :type="type" 
+         v-if="type !== 'textarea'">
+      
+        <textarea v-else 
+          v-model="VModel1"
+          :rows="rows"
+          :cols="cols"
+        />
+
+      
     </div>
 </template>
 

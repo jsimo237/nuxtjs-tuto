@@ -1,11 +1,8 @@
 
 <script setup lang="ts">
+import type { PayloadRegisterType } from '~/types/register.type';
 
-type PayloadRegisterType = {
-    name : string | null,
-    email : string | null,
-    phone : number | null,
-}
+
 
 const titleForm = ref<string>("Formulaire d'incription");
 
